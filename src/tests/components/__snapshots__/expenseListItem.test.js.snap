@@ -10,10 +10,10 @@ exports[`<ExpenseListItem /> should render ExpenseListItem with an expense 1`] =
 >
   <p>
     Amount: 
-    109500
+    $1,095.00
     <br />
     Date: 
-    -345600000
+    December 28th, 1969
     <br />
     <Link
       replace={false}

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`from components/header.js file should render Header correctly 1`] = `
+<header>
+  <h1>
+    Expensify
+  </h1>
+  <ul>
+    <NavLink
+      activeClassName="is-active"
+      ariaCurrent="true"
+      exact={true}
+      to="/"
+    >
+      <li>
+        Home
+      </li>
+    </NavLink>
+    <NavLink
+      activeClassName="is-active"
+      ariaCurrent="true"
+      to="/create"
+    >
+      <li>
+        Create New Expense
+      </li>
+    </NavLink>
+    <NavLink
+      activeClassName="is-active"
+      ariaCurrent="true"
+      to="/help"
+    >
+      <li>
+        Help Page
+      </li>
+    </NavLink>
+  </ul>
+</header>
+`;

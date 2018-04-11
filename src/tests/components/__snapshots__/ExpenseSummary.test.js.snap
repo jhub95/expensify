@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`from components/ExpenseSummary should return declaration of expenses count and sum 1`] = `
+<p>
+  Viewing 
+  3
+   
+  expenses
+   totalling 
+  $1,141.95
+</p>
+`;
+
+exports[`from components/ExpenseSummary should return null if no expenses 1`] = `""`;

@@ -1,11 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import ExpenseForm from './ExpenseForm';
-import {editExpense, removeExpense} from './../actions/expenses';
-
-// three tests 1. render page with snapshot
-// 2. should handle editExpense with spy
-// 3. should handle removeExpense with spy
+import {editExpense, startRemoveExpense} from './../actions/expenses';
 
 export class EditExpensePage extends React.Component{
     editExpense = (expense) => {
@@ -13,7 +9,7 @@ export class EditExpensePage extends React.Component{
         this.props.history.push('/');
     };
     removeExpense = (e) => {
-        this.props.removeExpense(this.props.expense.id);
+        this.props.startRemoveExpense(this.props.expense.id);
         this.props.history.push('/');
     };
     render(){
@@ -36,7 +32,7 @@ const mapStateToProps = (state,props) => ({
 
 const mapDispatchToProps = (dispatch,props)=>({
     editExpense: (expense) => dispatch(editExpense(expense.id, expense)),
-    removeExpense: (id) => dispatch(removeExpense(id))
+    startRemoveExpense: (id) => dispatch(startRemoveExpense(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);

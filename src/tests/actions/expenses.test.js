@@ -1,4 +1,4 @@
-import {addExpense, startAddExpense, removeExpense, editExpense, setExpenses, startSetExpenses} from './../../actions/expenses';
+import {addExpense, startAddExpense, removeExpense, startRemoveExpense, editExpense, setExpenses, startSetExpenses} from './../../actions/expenses';
 import expenses from './../fixtures/expenses';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -111,16 +111,31 @@ describe('expenses action file',()=>{
         })
     });
 
-    test('should fetch the expenses from firebase',(done)=>{
+    // test('should fetch the expenses from firebase',(done)=>{
+    //     const store = createMockStore({});
+    //     store.dispatch(startSetExpenses())
+    //     .then(()=>{
+    //         const actions = store.getActions();
+    //         expect(actions[0]).toEqual({
+    //             type: 'SET_EXPENSES',
+    //             expenses
+    //         });
+    //         done();
+    //     });
+    // });
+
+    test('should remove expense from firebase',(done)=>{
         const store = createMockStore({});
-        store.dispatch(startSetExpenses())
-        .then(()=>{
-            const actions = store.getActions();
-            expect(actions[0]).toEqual({
-                type: 'SET_EXPENSES',
-                expenses
+        const id = expenses[1].id;
+        store.dispatch(startRemoveExpense(id))
+         .then(()=>{
+            database.ref(`expenses/${id}`)
+            .once('value',(snapshot)=>{
+                const results = snapshot.val();
+                expect(results).toBeFalsy();
+                done();
             });
-            done();
-        });
+
+         });
     });
 });

@@ -13,7 +13,7 @@ beforeEach(()=>{
         expense={expenses[1]}
         id={expenses[1].id}
         editExpense={editExpenseSpy}
-        removeExpense={removeExpenseSpy}
+        startRemoveExpense={removeExpenseSpy}
         history={history}
          />);
 });

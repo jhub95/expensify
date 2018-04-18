@@ -35,3 +35,26 @@ export const startAddExpense = (expenseData = {}) => {
         });
     };
 };
+
+export const setExpenses = (expenses) =>({
+    type: 'SET_EXPENSES',
+    expenses
+});
+
+export const startSetExpenses = () => {
+    return (dispatch)=>{
+        return database.ref('expenses')
+            .once('value')
+            .then((snapshot)=>{
+                let expenses = [];
+                snapshot.forEach(element => {
+                    expenses.push({
+                        id:element.key,
+                        ...element.val()
+                    });
+                });
+                
+                dispatch(setExpenses(expenses));
+            });
+    };
+};

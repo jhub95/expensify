@@ -12,7 +12,7 @@ beforeEach(()=>{
     wrapper = shallow(<EditExpensePage 
         expense={expenses[1]}
         id={expenses[1].id}
-        editExpense={editExpenseSpy}
+        startEditExpense={editExpenseSpy}
         startRemoveExpense={removeExpenseSpy}
         history={history}
          />);
@@ -27,7 +27,7 @@ describe('from component EditExpensePage',()=>{
     test('should handle onSubmit edit',()=>{
         wrapper.find('ExpenseForm').prop('onSubmit')(expenses[1].id,expenses[1]);
         expect(history.push).toHaveBeenLastCalledWith('/');
-        expect(editExpenseSpy).toHaveBeenLastCalledWith(expenses[1].id);
+        expect(editExpenseSpy).toHaveBeenLastCalledWith(expenses[1].id,expenses[1].id);
     });
 
     test('should handle onClick remove expense',()=>{

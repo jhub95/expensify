@@ -1,4 +1,4 @@
-import {addExpense, startAddExpense, removeExpense, startRemoveExpense, editExpense, setExpenses, startSetExpenses} from './../../actions/expenses';
+import {addExpense, startAddExpense, removeExpense, startRemoveExpense, editExpense, startEditExpense, setExpenses, startSetExpenses} from './../../actions/expenses';
 import expenses from './../fixtures/expenses';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -36,6 +36,26 @@ describe('expenses action file',()=>{
             type: 'EDIT_EXPENSE',
             id:'123abc',
             updates:{note:'new value'}
+        });
+    });
+
+    test('should edit expense from firebase',(done)=>{
+        const store = createMockStore({});
+        const id = expenses[0].id;
+        const updates = {
+            amount: 7777.77
+        };
+        store.dispatch(startEditExpense(id,updates)).then(()=>{
+            const actions = store.getActions();
+            expect(actions[0]).toEqual({
+                type: 'EDIT_EXPENSE',
+                id,
+                updates
+            });
+            return database.ref(`expenses/${id}`).once('value');
+        }).then((snapshot)=>{
+            expect(snapshot.val().amount).toBe(updates.amount);
+            done();
         });
     });
 

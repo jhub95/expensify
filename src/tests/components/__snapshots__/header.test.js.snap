@@ -34,6 +34,12 @@ exports[`from components/header.js file should render Header correctly 1`] = `
         Help Page
       </li>
     </NavLink>
+    <button
+      id="logoutButton"
+      onClick={[Function]}
+    >
+      logout
+    </button>
   </ul>
 </header>
 `;

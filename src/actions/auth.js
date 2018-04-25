@@ -10,7 +10,9 @@ export const login = (uid) => {
 
 export const startLogin = () => {
     console.log('login button clicked');
-    return firebase.auth().signInWithPopup(googleAuthProvider);
+    return ()=>{
+        return firebase.auth().signInWithPopup(googleAuthProvider);
+    }
 };
 
 export const logout = () => ({

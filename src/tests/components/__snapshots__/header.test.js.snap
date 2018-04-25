@@ -9,8 +9,7 @@ exports[`from components/header.js file should render Header correctly 1`] = `
     <NavLink
       activeClassName="is-active"
       ariaCurrent="true"
-      exact={true}
-      to="/"
+      to="/dashboard"
     >
       <li>
         Home
@@ -23,15 +22,6 @@ exports[`from components/header.js file should render Header correctly 1`] = `
     >
       <li>
         Create New Expense
-      </li>
-    </NavLink>
-    <NavLink
-      activeClassName="is-active"
-      ariaCurrent="true"
-      to="/help"
-    >
-      <li>
-        Help Page
       </li>
     </NavLink>
     <button

@@ -5,8 +5,8 @@ import thunk from 'redux-thunk';
 import database from './../../firebase/firebase';
 
 const createMockStore = configureMockStore([thunk]);
-
-
+const uid = 'testUserID';
+const defaultAuthState = { auth:{uid} };
 
 
 beforeEach((done)=>{
@@ -15,7 +15,7 @@ beforeEach((done)=>{
         expensesData[id] = {description,note,amount,createdAt};
     });
 
-    database.ref('expenses').set(expensesData).then(()=>done());
+    database.ref(`users/${uid}/expenses`).set(expensesData).then(()=>done());
 });
 
 
@@ -40,7 +40,7 @@ describe('expenses action file',()=>{
     });
 
     test('should edit expense from firebase',(done)=>{
-        const store = createMockStore({});
+        const store = createMockStore(defaultAuthState);
         const id = expenses[0].id;
         const updates = {
             amount: 7777.77
@@ -52,7 +52,7 @@ describe('expenses action file',()=>{
                 id,
                 updates
             });
-            return database.ref(`expenses/${id}`).once('value');
+            return database.ref(`users/${uid}/expenses/${id}`).once('value');
         }).then((snapshot)=>{
             expect(snapshot.val().amount).toBe(updates.amount);
             done();
@@ -76,7 +76,7 @@ describe('expenses action file',()=>{
     });
 
     test('should add expense with defaults to db and store',(done)=>{
-        const store = createMockStore({});
+        const store = createMockStore(defaultAuthState);
         const expenseData = {
             description: 'mouse',
             amount:3000,
@@ -92,7 +92,7 @@ describe('expenses action file',()=>{
                    ...expenseData
                }
            });
-           return database.ref(`expenses/${actions[0].expense.id}`).once('value');
+           return database.ref(`users/${uid}/expenses/${actions[0].expense.id}`).once('value');
         }).then((snapshot)=>{
         expect(snapshot.val()).toEqual(expenseData);
         done();
@@ -100,7 +100,7 @@ describe('expenses action file',()=>{
     });
 
     test('should setup add expense and get default values',(done)=>{
-        const store = createMockStore({});
+        const store = createMockStore(defaultAuthState);
         const expenseDefaults = {
             description: '',
             amount:0,
@@ -116,7 +116,7 @@ describe('expenses action file',()=>{
                    ...expenseDefaults
                }
            });
-           return database.ref(`expenses/${actions[0].expense.id}`).once('value');
+           return database.ref(`users/${uid}/expenses/${actions[0].expense.id}`).once('value');
         }).then((snapshot)=>{
         expect(snapshot.val()).toEqual(expenseDefaults);
         done();
@@ -145,11 +145,11 @@ describe('expenses action file',()=>{
     // });
 
     test('should remove expense from firebase',(done)=>{
-        const store = createMockStore({});
+        const store = createMockStore(defaultAuthState);
         const id = expenses[1].id;
         store.dispatch(startRemoveExpense(id))
          .then(()=>{
-            database.ref(`expenses/${id}`)
+            database.ref(`users/${uid}/expenses/${id}`)
             .once('value',(snapshot)=>{
                 const results = snapshot.val();
                 expect(results).toBeFalsy();

@@ -1,27 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ExpenseListItem /> should render ExpenseListItem with an expense 1`] = `
-<div
-  style={
-    Object {
-      "borderBottom": "thin solid black",
-    }
-  }
+<Link
+  className="list-item"
+  replace={false}
+  to="/edit/2"
 >
-  <p>
-    Amount: 
-    $1,095.00
-    <br />
-    Date: 
-    December 28th, 1969
-    <br />
-    <Link
-      replace={false}
-      to="/edit/2"
+  <div>
+    <h4
+      className="list-item__title"
     >
-      Desc: 
       rent
-    </Link>
-  </p>
-</div>
+    </h4>
+    <span
+      className="list-item__subtitle"
+    >
+      December 28th, 1969
+    </span>
+  </div>
+  <h4
+    className="list-item__data"
+  >
+    $1,095.00
+  </h4>
+</Link>
 `;

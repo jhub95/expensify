@@ -5,7 +5,6 @@ import {startEditExpense, startRemoveExpense} from './../actions/expenses';
 
 export class EditExpensePage extends React.Component{
     startEditExpense = (expense) => {
-        console.log("expenseEditPage: expenses-",expense)
         this.props.startEditExpense(this.props.expense.id,expense);
         this.props.history.push('/');
     };
@@ -16,12 +15,21 @@ export class EditExpensePage extends React.Component{
     render(){
         return (
         <div>
-        <ExpenseForm
-            expense={this.props.expense}
-            onSubmit={this.startEditExpense}
-        />
-        <button onClick={this.removeExpense}
-        >remove</button>
+        <div className="page-header">
+            <div className="content-container">
+                <h1 className="page-header__title">Edit Expense</h1>
+            </div>
+        </div>
+        <div className="content-container">
+            <ExpenseForm
+                expense={this.props.expense}
+                onSubmit={this.startEditExpense}
+            />
+            <button onClick={this.removeExpense}
+                className="button--secondary"
+            >delete</button>
+        </div>
+        
         </div>
         )
     };

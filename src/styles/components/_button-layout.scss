@@ -1,0 +1,22 @@
+.button {
+    background: $blue;
+    color: white;
+    border: none;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1;
+    max-width: 16rem;
+    min-height: $l-size;
+    padding: $s-size;
+}
+
+.button--link {
+    background:none;
+    
+
+}
+
+.button--secondary {
+    @extend .button;
+    background-color: #888888;
+}

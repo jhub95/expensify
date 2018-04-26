@@ -1,14 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`from components/ExpenseSummary should return declaration of expenses count and sum 1`] = `
-<p>
-  Viewing 
-  3
-   
-  expenses
-   totalling 
-  $1,141.95
-</p>
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <div
+      className="page-header__title"
+    >
+      Viewing 
+      <span>
+        3
+      </span>
+       
+      expenses
+       totalling 
+      <span>
+        $1,141.95
+      </span>
+    </div>
+  </div>
+  <div
+    className="content-container"
+  >
+    <Link
+      replace={false}
+      to="/create"
+    >
+      <button
+        className="button"
+      >
+        New Expense
+      </button>
+    </Link>
+  </div>
+</div>
 `;
 
-exports[`from components/ExpenseSummary should return null if no expenses 1`] = `""`;
+exports[`from components/ExpenseSummary should return null if no expenses 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <Link
+      replace={false}
+      to="/create"
+    >
+      <button
+        className="button"
+      >
+        New Expense
+      </button>
+    </Link>
+  </div>
+</div>
+`;

@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn run test
+  /usr/local/bin/node /usr/local/bin/yarn run test -- -u
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
@@ -6660,7 +6660,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c cross-env NODE_ENV=test jest --config=jest.config.json
+  Arguments: -c cross-env NODE_ENV=test jest --config=jest.config.json -u
   Directory: /Users/justin/Dropbox/Justin/Javascript/react-andrew/expensify
   Output:
   

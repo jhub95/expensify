@@ -6,24 +6,11 @@ import { startLogin } from './../actions/auth';
 
 export const LoginForm = ({startLogin})=>{
     return (
-        <div>
-        <h1>Please login to see your expenses.</h1>
-            <form>
-                <input 
-                    type='text' 
-                    id='login_name'
-                    name='login_name' 
-                    placeholder="username"
-                />
-                <input 
-                    type="password" 
-                    id='password' 
-                    name='password'
-                    placeholder="password"
-                />
-                
-            </form>
-            <button id='loginButton' onClick={startLogin}>Login</button>
+        <div className="box-layout">
+            <div className="box-layout__box">
+                <h2 className="box-layout__title">Please login to see your expenses.</h2>
+                <button id='loginButton' className="button" onClick={startLogin}>Login with Google</button>
+            </div>
         </div>
     );
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import ExpenseList from './ExpenseList';
 import ExpenseListFilters from './ExpenseListFilters';
@@ -11,16 +10,10 @@ export const ExpenseDashboardPage = (props) => {
     return(
         <div>
         <ExpenseSummary />
-        {props.expenses.length > 0 ? <ExpenseListFilters /> : ''}
+        <ExpenseListFilters />
         <ExpenseList />
         </div>
     );
 }
 
-const mapStateToProps = (state)=>{
-    return {
-        expenses: selectExpenses(state.expenses,state.filters)
-    };
-};
-
-export default connect(mapStateToProps)(ExpenseDashboardPage);
+export default ExpenseDashboardPage;
